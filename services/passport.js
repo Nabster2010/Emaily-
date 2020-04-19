@@ -19,16 +19,16 @@ passport.use(
 			callbackURL: '/auth/google/callback',
 		},
 		async (accessToken, refreshToken, profile, done) => {
-			let user = await User.findOne({ googleId: profile.id });
-			if (user) {
-				return done(null, user);
+			const existingUser = await User.findOne({ googleId: profile.id });
+			if (existingUser) {
+				return done(null, existingUser);
 				// user already exist log him in
 			} else {
 				//create new user
-				user = await new User({
+				newUser = await new User({
 					googleId: profile.id,
 				}).save();
-				return done(null, user);
+				return done(null, newUser);
 			}
 		}
 	)
