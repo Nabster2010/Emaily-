@@ -3,6 +3,7 @@ const config = require('config');
 const connectDB = require('./config/db');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const Survey = require('./models/Survey');
 require('./services/passport');
 const app = express();
 app.use(
@@ -22,3 +23,4 @@ app.listen(PORT, () => console.log('Sever listening on Port 5000'));
 
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
