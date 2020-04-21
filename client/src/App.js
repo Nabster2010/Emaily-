@@ -3,9 +3,9 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Header from './components/Header';
 import { fetchUser } from './actions';
-import { Landing } from './components/Landing';
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Landing from './components/Landing';
+import Dashboard from './components/Dashboard';
+import SurveyNew from './components/surveys/SurveyNew';
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const App = () => {
 		dispatch(fetchUser());
 	}, []);
 	return (
-		<div className='container' style={{ textAlign: 'center' }}>
+		<div className='container'>
 			<BrowserRouter>
 				<Fragment>
 					<Header />
